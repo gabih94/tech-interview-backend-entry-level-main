@@ -15,4 +15,16 @@ class Cart < ApplicationRecord
     end
     save!
   end
+
+  def abandoned?
+    last_interaction_at.nill? || last_interaction_at < 3.hour.ago
+  end
+
+  def abandoned
+    update(status: 'abandoned') if abandoned?
+  end
+
+  def must_be_deleted
+    last_interaction_at < 7.days.ago && status == 'abandoned'
+  end
 end
