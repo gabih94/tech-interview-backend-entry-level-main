@@ -7,3 +7,10 @@
   - mailers
   - active_storage_analysis
   - active_storage_purge
+
+:schedules:
+  abandoned_cart_cleanup:
+    cron: "0 * * * *" 
+    class: "AbandonedCartCleanupJob"
+    queue: default
+    description: "Limpeza de carrinhos abandonados"
