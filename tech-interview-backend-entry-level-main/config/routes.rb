@@ -9,8 +9,8 @@ Rails.application.routes.draw do
    resource :cart, only: [:show] do
     post :add_product, on: :collection
     patch :update_product_quantity, on: :collection
-    delete 'remove_product/:product_id', to: 'cart#remove_product', as: :remove_product
+    delete 'remove_product/:product_id', to: 'carts#remove_product', as: :remove_product
   end
-
+  
   root "rails/health#show"
 end
